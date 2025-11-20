@@ -24,10 +24,10 @@ public class BulletPool : MonoBehaviour
     }
     void Start()
     {
-       AddLasersToPool(poolSize);
+       AddBulletsToPool(poolSize);
     }
 
-    private void AddLasersToPool(int amount)
+    private void AddBulletsToPool(int amount)
     {
         for (int i = 0; i < poolSize; i++)
         {

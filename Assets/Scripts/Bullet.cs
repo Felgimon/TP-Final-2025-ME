@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter()
     {
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
