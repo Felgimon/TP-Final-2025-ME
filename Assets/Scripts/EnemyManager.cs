@@ -24,7 +24,7 @@ public class EnemyManager : MonoBehaviour
                 EnemyList[randomNumber].SetActive(true);//Busco uno cualquiera de la lista y lo activo
                 elapsed = 0;
             } 
-            Debug.Log("Enemigo activado");
+            //Debug.Log("Enemigo activado");
         }
     }
 }
