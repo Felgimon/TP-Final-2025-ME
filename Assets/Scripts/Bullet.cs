@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float timeElapsed = 0f;
     void Start()
     {
-        
+
     }
 
     private void OnCollisionEnter()

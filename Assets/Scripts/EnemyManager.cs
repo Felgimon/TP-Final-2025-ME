@@ -26,5 +26,7 @@ public class EnemyManager : MonoBehaviour
             } 
             //Debug.Log("Enemigo activado");
         }
+
+        //Si disparo suficientemente rapido puede chocar dos veces y sumar el score. O bajo lo rapido que disparas o desactivo el collider apenas le pegan.
     }
 }

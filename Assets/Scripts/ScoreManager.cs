@@ -15,10 +15,6 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         scoreTMP.text = score.ToString();
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            addScore(1);
-        }
         if (score  == maxScore)
         {
             score = 0;
@@ -29,4 +25,6 @@ public class ScoreManager : MonoBehaviour
     {
         score += points;
     }
+
+    //To do: Funcion que cada vez que sumas puntos el color del puntaje se vuelva verde por
 }
