@@ -7,6 +7,13 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreTMP;
     [SerializeField] int score = 0;
     [SerializeField] int maxScore = 10;
+    [SerializeField] float changeColorDuration = 0.25f;
+    private bool isChangingColor = false;
+    private float t = 0f;
+    private int phase = 0; 
+
+    private Color baseColor = Color.white;
+    private Color highlightColor = new Color(0f, 1f, 0f); 
     void Start()
     {
         
@@ -19,11 +26,46 @@ public class ScoreManager : MonoBehaviour
         {
             score = 0;
         }
+        if (isChangingColor) //Si sumo score hago que se vuelva verde de a poco y pueda volver a blanco de a poco
+        {
+            t += Time.deltaTime / changeColorDuration;
+            if (phase == 0) // ir a verde
+            {
+                scoreTMP.color = Color.Lerp(baseColor, highlightColor, t);
+
+                if (t >= 1f)
+                {
+                    phase = 1; 
+                    t = 0f;
+                }
+            }
+            else if (phase == 1) // volver a blanco
+            {
+                scoreTMP.color = Color.Lerp(highlightColor, baseColor, t);
+
+                if (t >= 1f)
+                {
+                    // Termina la animación
+                    isChangingColor = false;
+                    phase = 0;
+                    t = 0f;
+                }
+            }
+
+        }
     }
 
     public void addScore(int points)
     {
         score += points;
+        isChangingColor = true;
+        t = 0f;
+        phase = 0;
+    }
+
+    private void changeTextColor(float objective)
+    {
+        scoreTMP.color = new Color(scoreTMP.color.r + objective, scoreTMP.color.g, scoreTMP.color.b + objective);
     }
 
     //To do: Funcion que cada vez que sumas puntos el color del puntaje se vuelva verde por

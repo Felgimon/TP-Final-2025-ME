@@ -15,6 +15,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnEnable() //Cuando se activa el enemigo sube 
     {
+        gameObject.GetComponent<Collider>().enabled = true; 
         MoveEnemy();
     }
 
@@ -22,7 +23,8 @@ public class EnemyScript : MonoBehaviour
     {
        if (collision.gameObject.tag == "Dart")
         {
-            scoreManagerScript.addScore(1); // QUe el score se multiple por un numero que arranque en 5 y que vaya decreciendo en el paso del tiempo hasta que el tiempo llegue a cero.
+            gameObject.GetComponent<Collider>().enabled = false; //Para evitar que le peguen dos veces
+            scoreManagerScript.addScore(1); // Que el score se multiple por un numero que arranque en 5 y que vaya decreciendo en el paso del tiempo hasta que el tiempo llegue a cero.
             MoveEnemy(); // Baja
         }
     }

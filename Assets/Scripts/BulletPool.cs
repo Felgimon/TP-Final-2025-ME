@@ -34,7 +34,7 @@ public class BulletPool : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab);
             bullet.SetActive(false);
             bulletList.Add(bullet);
-            //bullet.transform.parent = transform;
+            bullet.transform.parent = transform;
         }
     }
 
