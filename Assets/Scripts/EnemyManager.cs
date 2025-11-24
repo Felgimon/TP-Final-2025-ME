@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> EnemyList;
     [SerializeField] private float appearanceTime;
+    [SerializeField] private EnemyScript enemyScript;
     private float elapsed = 0;
 
     void Start()
@@ -13,20 +14,20 @@ public class EnemyManager : MonoBehaviour
         
     }
 
+    //TO DO: Que después de 5 segundos el enemigo desaparezca.
+
     void Update()
     {
         elapsed += Time.deltaTime;
         if (elapsed > appearanceTime) //cada appearanceTime segundos 
         {
             int randomNumber = Random.Range(0, EnemyList.Count);
-            if (!EnemyList[randomNumber].activeSelf) //Si no esta activo lo activo, y dejo en cero el tiempo de espera, sino se hace devuelta pq el elapsed time no se reinicia
+            if (!EnemyList[randomNumber].activeSelf && EnemyList[randomNumber] != enemyScript.lastEnemyKilled) //Si no esta activo lo activo, y dejo en cero el tiempo de espera, sino se hace devuelta pq el elapsed time no se reinicia
             {
                 EnemyList[randomNumber].SetActive(true);//Busco uno cualquiera de la lista y lo activo
                 elapsed = 0;
             } 
             //Debug.Log("Enemigo activado");
         }
-
-        //Si disparo suficientemente rapido puede chocar dos veces y sumar el score. O bajo lo rapido que disparas o desactivo el collider apenas le pegan.
     }
 }

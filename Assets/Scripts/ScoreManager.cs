@@ -26,6 +26,19 @@ public class ScoreManager : MonoBehaviour
         {
             score = 0;
         }
+        changeTextColor();
+    }
+
+    public void addScore(int points)
+    {
+        score += points;
+        isChangingColor = true;
+        t = 0f;
+        phase = 0;
+    }
+
+    private void changeTextColor()
+    {
         if (isChangingColor) //Si sumo score hago que se vuelva verde de a poco y pueda volver a blanco de a poco
         {
             t += Time.deltaTime / changeColorDuration;
@@ -35,7 +48,7 @@ public class ScoreManager : MonoBehaviour
 
                 if (t >= 1f)
                 {
-                    phase = 1; 
+                    phase = 1;
                     t = 0f;
                 }
             }
@@ -53,19 +66,6 @@ public class ScoreManager : MonoBehaviour
             }
 
         }
-    }
-
-    public void addScore(int points)
-    {
-        score += points;
-        isChangingColor = true;
-        t = 0f;
-        phase = 0;
-    }
-
-    private void changeTextColor(float objective)
-    {
-        scoreTMP.color = new Color(scoreTMP.color.r + objective, scoreTMP.color.g, scoreTMP.color.b + objective);
     }
 
     //To do: Funcion que cada vez que sumas puntos el color del puntaje se vuelva verde por
