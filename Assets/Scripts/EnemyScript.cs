@@ -5,14 +5,13 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     private ScoreManager scoreManagerScript;
-    private Vector3 startingPosition;
-    [SerializeField] private float movingDistance;
+    private Quaternion startingRotation;
     public GameObject lastEnemyKilled; //Se va a encargar de que no puedas quedarte siempre matando al mismo objetivo.
     [SerializeField] private float enemyLifeTime = 10;
 
     void Start()
     {
-        startingPosition = transform.position;
+        startingRotation = transform.rotation;
         scoreManagerScript = GameObject.Find("ScoreManagerCanvas").GetComponent<ScoreManager>();
     }
 
@@ -27,7 +26,6 @@ public class EnemyScript : MonoBehaviour
     {
        if (collision.gameObject.tag == "Dart")
         {
-            Debug.Log("Holaaa"); 
             scoreManagerScript.addScore(1); // Que el score se multiple por un numero que arranque en 5 y que vaya decreciendo en el paso del tiempo hasta que el tiempo llegue a cero.
             lastEnemyKilled = gameObject;
             CancelInvoke("Dead"); //Cancelo el invoke pendiente de cuando se activó.
@@ -37,16 +35,18 @@ public class EnemyScript : MonoBehaviour
 
     private void MoveEnemy() //Llamada cuando aparece y cuando le pegas el disparo
     {
-        Vector3 pos = transform.position;
-        if (pos.y == startingPosition.y)
+        Quaternion rot = transform.rotation;
+        Debug.Log("starting Rotation:" + startingRotation.x);
+        Debug.Log("rotación actual:" + rot.x); //Quaternions del orto los odio.
+        if (rot.x == startingRotation.x) //No se por qué hay variacion aunque están seteados con la misma variable. IMPORTANTE POR FIX
         {
-           pos.y -= movingDistance;  //Cuando esta en el subsuelo sube para arriba para que el jugador le dispare
+            rot.x = 0;  //Si está acostado que se pare
         }
         else
         {
-            pos.y += movingDistance;  //Si esta arriba que baje a su posicion inicial
+            rot = startingRotation;  //Si esta parado que se acueste
         }
-        transform.position = pos;
+        transform.rotation = rot;
     }
 
     void Update()
@@ -60,4 +60,6 @@ public class EnemyScript : MonoBehaviour
         gameObject.SetActive(false);
         gameObject.GetComponent<Collider>().enabled = false; //Para evitar que le peguen dos veces
     }
+
+    //TO DO : Hacer que la sumatoria de angulos suba y baje de a poco. O hacer animación en blende y re - import.
 }

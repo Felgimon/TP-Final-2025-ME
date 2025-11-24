@@ -14,8 +14,6 @@ public class EnemyManager : MonoBehaviour
         
     }
 
-    //TO DO: Que después de 5 segundos el enemigo desaparezca.
-
     void Update()
     {
         elapsed += Time.deltaTime;
