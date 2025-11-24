@@ -29,10 +29,10 @@ public class ShootingManager : MonoBehaviour
         }
         RaycastHit hit;
         if (Physics.Raycast(cameraTr.position, cameraTr.forward, out hit, rayDistance)) {
-            Debug.Log("colision raycast:" + hit.point);
+             //Debug.Log("colision raycast:" + hit.point);
         }
 
         Gizmos.color = Color.yellow;
-        Debug.DrawRay(cameraTr.position, cameraTr.forward * rayDistance, Gizmos.color);
+        //Debug.DrawRay(cameraTr.position, cameraTr.forward * rayDistance, Gizmos.color);
     }
 }

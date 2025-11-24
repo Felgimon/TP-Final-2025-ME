@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] private ScoreManager scoreManagerScript;
-    [SerializeField] private Vector3 startingPosition;
+    private ScoreManager scoreManagerScript;
+    private Vector3 startingPosition;
     [SerializeField] private float movingDistance;
     public GameObject lastEnemyKilled; //Se va a encargar de que no puedas quedarte siempre matando al mismo objetivo.
     [SerializeField] private float enemyLifeTime = 10;
@@ -13,6 +13,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         startingPosition = transform.position;
+        scoreManagerScript = GameObject.Find("ScoreManagerCanvas").GetComponent<ScoreManager>();
     }
 
     private void OnEnable() //Cuando se activa el enemigo sube 
@@ -26,8 +27,10 @@ public class EnemyScript : MonoBehaviour
     {
        if (collision.gameObject.tag == "Dart")
         {
+            Debug.Log("Holaaa"); 
             scoreManagerScript.addScore(1); // Que el score se multiple por un numero que arranque en 5 y que vaya decreciendo en el paso del tiempo hasta que el tiempo llegue a cero.
             lastEnemyKilled = gameObject;
+            CancelInvoke("Dead"); //Cancelo el invoke pendiente de cuando se activó.
             Dead(); //Con el sistema de 5 segundos de lifeTime se rompe. Creo que es porque el invoke no se cancela. Deberia cancelarse si es que le disparan antes. Quiza con un bool pero no tendria que ser con invoke.
         }
     }
