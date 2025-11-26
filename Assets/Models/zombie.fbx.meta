@@ -1,9 +1,114 @@
 fileFormatVersion: 2
-guid: 2a849c29fbbba2d4f8fd81a13b394cd2
+guid: 1049711ba4c89814d93f01872405e063
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BocaZombie
+    second: {fileID: 2100000, guid: 81bea7ef87a0e854c8b9c9c2ee750c39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CamisaOscuroZombie.002
+    second: {fileID: 2100000, guid: 9d3d0f471690a514487eba31875acb40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CamisaZombie.002
+    second: {fileID: 2100000, guid: 75822e1443d9ef54d9ab32bd1e539c64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CartonZombie
+    second: {fileID: 2100000, guid: 52ebdbce880f89949aa1069619d877c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CorbataZombie.002
+    second: {fileID: 2100000, guid: e96b32334d718d548938d30a08b720a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DientesZombie
+    second: {fileID: 2100000, guid: 91fb9c7cae365834498df852c9fb68e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LenguaOscuroZombie
+    second: {fileID: 2100000, guid: 0bf9995a291446b4a91666628b7d3189, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LenguaZombie
+    second: {fileID: 2100000, guid: 4616cef92fb6ff545bcac818f2e9e46c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "OjosU\xF1aZombie"
+    second: {fileID: 2100000, guid: dc59b6e9ccb194441a487ddca9a46fb5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PantalonOscuroZombie.002
+    second: {fileID: 2100000, guid: 76069280532f59b47aa55a885cb90dc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PantalonZombie.002
+    second: {fileID: 2100000, guid: 5fba1f5074f27d74a8ec124f4048ae07, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PeloZombie
+    second: {fileID: 2100000, guid: 1b1113f9aee135a41b3d2c1f1a54dfba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PielMuyOscuraZombie.002
+    second: {fileID: 2100000, guid: ce971509dc5f1e2438260f61cdf5d0a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PielOscuraZombie
+    second: {fileID: 2100000, guid: 8de47436a9899fd4880dfee1be35e042, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PielZombie
+    second: {fileID: 2100000, guid: 626ce11738cefcc4189f2740d33a74b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PupilaZombie
+    second: {fileID: 2100000, guid: 78a85bcdfed01684e8353dc1a74ed003, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SacoOscuroZombie.002
+    second: {fileID: 2100000, guid: 6f7947e60843fb14db669ec256d3c656, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SacoZombie
+    second: {fileID: 2100000, guid: b664a5e463766024d910ce5e58f9bb63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SuelaOscuraZombie.002
+    second: {fileID: 2100000, guid: adc3dd39be7f026459882d0d8ececa34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SuelaZombie.002
+    second: {fileID: 2100000, guid: abbc54ab7fa851f41b5b60d1c2f6b784, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ZapatosZombie.002
+    second: {fileID: 2100000, guid: 6ee7303168bd3124cbe3782f94d19ff2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
