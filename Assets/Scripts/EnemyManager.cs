@@ -20,9 +20,9 @@ public class EnemyManager : MonoBehaviour
         if (elapsed > appearanceTime) //cada appearanceTime segundos 
         {
             int randomNumber = Random.Range(0, EnemyList.Count);
-            if (!EnemyList[randomNumber].activeSelf && EnemyList[randomNumber] != enemyScript.lastEnemyKilled) //Si no esta activo lo activo, y dejo en cero el tiempo de espera, sino se hace devuelta pq el elapsed time no se reinicia
+            if (!EnemyList[randomNumber].GetComponent<EnemyScript>().isUp && EnemyList[randomNumber] != enemyScript.lastEnemyKilled) //Si no esta activo lo activo, y dejo en cero el tiempo de espera, sino se hace devuelta pq el elapsed time no se reinicia
             {
-                EnemyList[randomNumber].SetActive(true);//Busco uno cualquiera de la lista y lo activo
+                EnemyList[randomNumber].GetComponent<EnemyScript>().isUp = true; //Seteo que está acostado
                 elapsed = 0;
             } 
             //Debug.Log("Enemigo activado");

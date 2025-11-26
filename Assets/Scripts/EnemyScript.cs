@@ -7,59 +7,45 @@ public class EnemyScript : MonoBehaviour
     private ScoreManager scoreManagerScript;
     private Quaternion startingRotation;
     public GameObject lastEnemyKilled; //Se va a encargar de que no puedas quedarte siempre matando al mismo objetivo.
+    private Animator zombieAnimator;
     [SerializeField] private float enemyLifeTime = 10;
+    public bool isUp = false; //Variable local que corrobora si está acostado o no
 
     void Start()
     {
+        zombieAnimator = GetComponent<Animator>();
         startingRotation = transform.rotation;
         scoreManagerScript = GameObject.Find("ScoreManagerCanvas").GetComponent<ScoreManager>();
     }
 
-    private void OnEnable() //Cuando se activa el enemigo sube 
+    private void Update()
     {
-        gameObject.GetComponent<Collider>().enabled = true;
-        MoveEnemy();
-        Invoke("Dead", enemyLifeTime);
+        if (isUp)
+        {
+            zombieAnimator.SetBool("isUp", true);
+            gameObject.GetComponent<Collider>().enabled = true;
+            Invoke("Dead", enemyLifeTime); //5 segundos para que se acueste solo
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
        if (collision.gameObject.tag == "Dart")
         {
-            scoreManagerScript.addScore(1); // Que el score se multiple por un numero que arranque en 5 y que vaya decreciendo en el paso del tiempo hasta que el tiempo llegue a cero.
+            scoreManagerScript.addScore(1); 
             lastEnemyKilled = gameObject;
             CancelInvoke("Dead"); //Cancelo el invoke pendiente de cuando se activó.
-            Dead(); //Con el sistema de 5 segundos de lifeTime se rompe. Creo que es porque el invoke no se cancela. Deberia cancelarse si es que le disparan antes. Quiza con un bool pero no tendria que ser con invoke.
+            Dead(); 
         }
-    }
-
-    private void MoveEnemy() //Llamada cuando aparece y cuando le pegas el disparo
-    {
-        Quaternion rot = transform.rotation;
-        Debug.Log("starting Rotation:" + startingRotation.x);
-        Debug.Log("rotación actual:" + rot.x); //Quaternions del orto los odio.
-        if (rot.x == startingRotation.x) //No se por qué hay variacion aunque están seteados con la misma variable. IMPORTANTE POR FIX
-        {
-            rot.x = 0;  //Si está acostado que se pare
-        }
-        else
-        {
-            rot = startingRotation;  //Si esta parado que se acueste
-        }
-        transform.rotation = rot;
-    }
-
-    void Update()
-    {
-        
     }
 
     private void Dead()
     {
-        MoveEnemy();
-        gameObject.SetActive(false);
+        Debug.Log("Zombie muerto");
+        zombieAnimator.SetBool("isUp", false);
+        isUp = false;
         gameObject.GetComponent<Collider>().enabled = false; //Para evitar que le peguen dos veces
     }
 
-    //TO DO : Hacer que la sumatoria de angulos suba y baje de a poco. O hacer animación en blende y re - import.
+
 }

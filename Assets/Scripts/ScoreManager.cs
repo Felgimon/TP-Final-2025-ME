@@ -13,7 +13,9 @@ public class ScoreManager : MonoBehaviour
     private int phase = 0; 
 
     private Color baseColor = Color.white;
-    private Color highlightColor = new Color(0f, 1f, 0f); 
+    private Color highlightColor = new Color(0f, 1f, 0f);
+
+    //TO DO: // Que el score se multiple por un numero que arranque en 5 y que vaya decreciendo en el paso del tiempo hasta que el tiempo llegue a cero.
     void Start()
     {
         
