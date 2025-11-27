@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    private ScoreManager scoreManagerScript;
+    private UIManager UIManagerScript;
     public GameObject lastEnemyKilled; //Se va a encargar de que no puedas quedarte siempre matando al mismo objetivo.
     private Animator zombieAnimator;
     [SerializeField] private float enemyLifeTime = 10;
@@ -14,7 +14,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         zombieAnimator = GetComponent<Animator>();
-        scoreManagerScript = GameObject.Find("UIManagerCanvas").GetComponent<ScoreManager>();
+        UIManagerScript = GameObject.Find("UIManagerCanvas").GetComponent<UIManager>();
     }
 
     private void Update()
@@ -31,7 +31,7 @@ public class EnemyScript : MonoBehaviour
     {
        if (collision.gameObject.tag == "Dart")
         {
-            scoreManagerScript.addScore(1); 
+            UIManagerScript.addScore(1); 
             lastEnemyKilled = gameObject;
             CancelInvoke("Dead"); //Cancelo el invoke pendiente de cuando se activó.
             Dead(); 
