@@ -5,16 +5,15 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     private ScoreManager scoreManagerScript;
-    private Quaternion startingRotation;
     public GameObject lastEnemyKilled; //Se va a encargar de que no puedas quedarte siempre matando al mismo objetivo.
     private Animator zombieAnimator;
     [SerializeField] private float enemyLifeTime = 10;
+    [SerializeField] Collider enemyCollider;
     public bool isUp = false; //Variable local que corrobora si está acostado o no
 
     void Start()
     {
         zombieAnimator = GetComponent<Animator>();
-        startingRotation = transform.rotation;
         scoreManagerScript = GameObject.Find("ScoreManagerCanvas").GetComponent<ScoreManager>();
     }
 
@@ -23,7 +22,7 @@ public class EnemyScript : MonoBehaviour
         if (isUp)
         {
             zombieAnimator.SetBool("isUp", true);
-            gameObject.GetComponent<Collider>().enabled = true;
+            enemyCollider.enabled = true;
             Invoke("Dead", enemyLifeTime); //5 segundos para que se acueste solo
         }
     }
@@ -44,7 +43,7 @@ public class EnemyScript : MonoBehaviour
         Debug.Log("Zombie muerto");
         zombieAnimator.SetBool("isUp", false);
         isUp = false;
-        gameObject.GetComponent<Collider>().enabled = false; //Para evitar que le peguen dos veces
+        enemyCollider.enabled = false; //Para evitar que le peguen dos veces
     }
 
 
