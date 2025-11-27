@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
         scoreTMP.text = score.ToString() + "/" + maxScore.ToString();
         if (score  == maxScore)
         {
-            StartCoroutine(ResultOfGame("GANASTE"));
+            StartCoroutine(ResultOfGame("GANASTE", Color.green));
         }
         changeTextColor();
 
@@ -39,15 +39,16 @@ public class UIManager : MonoBehaviour
         tempTMP.text = Mathf.Round(timeRemaining).ToString();
         if (timeRemaining <= 0)
         {
-            StartCoroutine(ResultOfGame("PERDISTE"));
+            StartCoroutine(ResultOfGame("PERDISTE", Color.red));
         }
     }
 
-    IEnumerator ResultOfGame(string textoResult)
+    IEnumerator ResultOfGame(string textoResult, Color color)
     {
         mira.SetActive(false);
         Time.timeScale = 0f;
         resultTMP.text = textoResult;
+        resultTMP.color = color;
         yield return new WaitForSecondsRealtime(5);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
