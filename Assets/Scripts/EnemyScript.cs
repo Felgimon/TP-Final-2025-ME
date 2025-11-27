@@ -14,7 +14,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         zombieAnimator = GetComponent<Animator>();
-        scoreManagerScript = GameObject.Find("ScoreManagerCanvas").GetComponent<ScoreManager>();
+        scoreManagerScript = GameObject.Find("UIManagerCanvas").GetComponent<ScoreManager>();
     }
 
     private void Update()
@@ -40,7 +40,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Dead()
     {
-        Debug.Log("Zombie muerto");
+        //Debug.Log("Zombie muerto");
         zombieAnimator.SetBool("isUp", false);
         isUp = false;
         enemyCollider.enabled = false; //Para evitar que le peguen dos veces
