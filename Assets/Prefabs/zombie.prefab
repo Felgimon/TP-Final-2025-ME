@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0d953f4dccdbb7946a18bc7484e4c02f,
         type: 3}
       propertyPath: m_Name
-      value: zombie (5)
+      value: zombie
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastEnemyKilled: {fileID: 0}
-  enemyLifeTime: 4
+  enemyLifeTime: 5
   enemyCollider: {fileID: 8534507892245270743}
   isUp: 0
 --- !u!95 &5423042657848575034
