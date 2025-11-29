@@ -6,8 +6,10 @@ public class ShootingManager : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float bulletOffSet = 1f;
+    [SerializeField] Animator pistolAnimator;
     [SerializeField] private Transform cameraTr;
     [SerializeField] private float rayDistance;
+    [SerializeField] private float secondsToWait = 0.5f;
     void Start()
     {
 
@@ -15,8 +17,14 @@ public class ShootingManager : MonoBehaviour
 
     void Update()
     {
+        StartCoroutine(Shoot());
+    }
+
+    IEnumerator Shoot()
+    {
         if (Input.GetMouseButtonDown(0))
         {
+            pistolAnimator.SetBool("IsShooting", true);
             //Requesteo bullet
             GameObject bullet = BulletPool.Instance.RequestBullet();
             //Configuraciones pq el rb es malardo, deberia de haberlo hecho con velocity, maldito anunciado.
@@ -34,8 +42,9 @@ public class ShootingManager : MonoBehaviour
             rb.velocity = Vector3.zero; //Lo reinicio antes de ponerle el addForce para que no se llegue a stackear de los addForces de antes
             rb.angularVelocity = Vector3.zero;
             rb.AddForce(direccion * bulletSpeed, ForceMode.VelocityChange); //Problema con el el addforce, salen a cualquier lado.
+            yield return new WaitForSecondsRealtime(secondsToWait);
+            pistolAnimator.SetBool("IsShooting", false);
         }
-
         //Debug.DrawRay(cameraTr.position, cameraTr.forward * rayDistance, Gizmos.color);
     }
 }
