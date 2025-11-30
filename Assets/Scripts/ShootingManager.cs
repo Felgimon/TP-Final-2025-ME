@@ -9,7 +9,8 @@ public class ShootingManager : MonoBehaviour
     [SerializeField] Animator pistolAnimator;
     [SerializeField] private Transform cameraTr;
     [SerializeField] private float rayDistance;
-    [SerializeField] private float secondsToWait = 0.5f;
+    [SerializeField] private float secondsToWait = 0.3f;
+    private bool canShoot = true;
     void Start()
     {
 
@@ -22,7 +23,7 @@ public class ShootingManager : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canShoot)
         {
             pistolAnimator.SetBool("IsShooting", true);
             //Requesteo bullet
@@ -42,7 +43,9 @@ public class ShootingManager : MonoBehaviour
             rb.velocity = Vector3.zero; //Lo reinicio antes de ponerle el addForce para que no se llegue a stackear de los addForces de antes
             rb.angularVelocity = Vector3.zero;
             rb.AddForce(direccion * bulletSpeed, ForceMode.VelocityChange); //Problema con el el addforce, salen a cualquier lado.
+            canShoot = false;
             yield return new WaitForSecondsRealtime(secondsToWait);
+            canShoot = true;
             pistolAnimator.SetBool("IsShooting", false);
         }
         //Debug.DrawRay(cameraTr.position, cameraTr.forward * rayDistance, Gizmos.color);
